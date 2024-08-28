@@ -88,7 +88,7 @@ let publishParams (framework : string) (release : bool) =
                 }
             OutputPath = Some ("../../out/server/" + framework)
             Runtime = Some framework
-            Configuration = DotNet.BuildConfiguration.Release
+            Configuration = if release  then DotNet.BuildConfiguration.Release else DotNet.BuildConfiguration.Debug
         })
 
 let buildParams (release : bool) =
@@ -105,7 +105,7 @@ let buildParams (release : bool) =
         })
 
 Target.create "BuildDll" <| fun _ ->
-    DotNet.build (buildParams true) cwtoolsProjectName
+    DotNet.build (buildParams false) cwtoolsProjectName
 
 Target.create "BuildServer" <| fun _ ->
     match Environment.isWindows with
@@ -115,9 +115,9 @@ Target.create "BuildServer" <| fun _ ->
     // DotNet.publish (publishParams "linux-x64" false) cwtoolsProjectName //(fun p -> {p with Common = { p.Common with WorkingDirectory = "src/Main"; CustomParams = Some "--self-contained true /p:LinkDuringPublish=false";}; OutputPath = Some "../../out/server/linux-x64"; Runtime =  Some "linux-x64"; Configuration = DotNet.BuildConfiguration.Release }) cwtoolsProjectName
 
 Target.create "PublishServer" <| fun _ ->
-    DotNet.publish (publishParams "win-x64" true) cwtoolsProjectName
-    DotNet.publish (publishParams "linux-x64" true) cwtoolsLinuxProjectName
-    DotNet.publish (publishParams "osx.10.11-x64" true) cwtoolsProjectName
+    DotNet.publish (publishParams "win-x64" false) cwtoolsProjectName
+    DotNet.publish (publishParams "linux-x64" false) cwtoolsLinuxProjectName
+    DotNet.publish (publishParams "osx.10.11-x64" false) cwtoolsProjectName
 
 let runTsc additionalArgs noTimeout =
     let cmd = "tsc"

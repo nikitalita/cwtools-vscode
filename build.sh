@@ -1,9 +1,9 @@
 #!/bin/bash
 
-dotnet tool restore
-dotnet paket restore
+/usr/local/share/dotnet/x64/dotnet tool restore
+/usr/local/share/dotnet/x64/dotnet paket restore
 exit_code=$?
 if [ $exit_code -ne 0 ]; then
   exit $exit_code
 fi
-dotnet fake run build.fsx --target $@
+/usr/local/share/dotnet/x64/dotnet fake run build.fsx --target $@

@@ -525,8 +525,8 @@ NUGET
 GROUP git
 
 GIT
-  remote: file:///C:/users/thomas/git/cwtools
-     (ac42553b4b0ec8218f416635a8eeb01beb3aedc2)
+  remote: file:///Users/nikita/Workspace/cwtools
+     (6104acc541f8460e6aa981f30e39abc0971a97f0)
 GROUP LinuxLibGit
 NUGET
   remote: https://www.nuget.org/api/v2

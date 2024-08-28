@@ -49,7 +49,7 @@
 			"name": "Quick Build and Launch Extension",
 			"type": "extensionHost",
 			"runtimeExecutable": "${execPath}",
-			"args": ["C:\\PRogramming\\Stellaris\\stellaris",  "--extensionDevelopmentPath=${workspaceRoot}" ],
+			"args": ["/Users/nikita/Workspace/HDG-modifeid.code-workspace",  "--extensionDevelopmentPath=${workspaceRoot}" ],
 			"stopOnEntry": false,
 			"request": "launch",
             "sourceMaps": false
